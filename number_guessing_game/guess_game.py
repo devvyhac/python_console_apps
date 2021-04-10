@@ -17,6 +17,8 @@ class Guess:
     self.score = 0
     self.set_highscore()
     self.current_player = []
+    self.chance_regulator = 3
+
   
   def set_correct(self, min, max):
     self.correct = randint(min, max)
@@ -137,7 +139,13 @@ class Guess:
   def proceed(self):
     self.level += 1
     self.max += 5
-    self.increase_chances(2)
+
+    if self.level % 10 == 0:
+        self.chance_regulator += 1
+
+    if self.level % self.chance_regulator == 0:
+        self.increase_chances(2)
+
     self.set_correct(self.min, self.max)
     self.score += 10
     

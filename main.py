@@ -11,10 +11,12 @@ from methods.confirm import confirm_exit
 from methods.fancy import fancy_typo, fancy_text
 
 commands = ["List Available Programs", "Exit"]
-tools = ["Guess Game •   [Number Guessing Game]", 
-         "Anon Chat • [Anonymous Chat Application]", 
-         "Auth Hoard • [Password Generator]", 
-         "Moon Spider • [Web Crawler/Site Map Payload]"]
+tools = ["Guess Game • [ Number Guessing Game ]", 
+         "ATM Mock • [ ATM - Cash Deposit & Withdraw]",
+         "Aboki $$ • [ Currency Converter ]",
+         "Anon Chat • [ Anonymous Chat Application ]", 
+         "Auth Hoard • [ Password Generator ]", 
+         "Moon Spider • [ Web Crawler/Site Map Payload ]"]
 
 
 clear_console()
@@ -22,10 +24,10 @@ is_active = True
 
 
 toolname = fancy_typo("Termi Py", "fancy21")
-#loader = Loader(load_text="Loading {}".format(toolname), load_type="success", feedback="{} Successfully Loaded".format(toolname))
-#loader.load()
-#loader.terminate(timeout=1.5)
-#clear_console()
+loader = Loader(load_text="Loading {}".format(toolname), load_type="success", feedback="{} Successfully Loaded".format(toolname))
+loader.load()
+loader.terminate(timeout=1.5)
+clear_console()
 
 print_tool_name("Termi Py", "Devvyhac", "Team Trace Techie", "github.com/devvyhac")
 

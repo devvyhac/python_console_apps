@@ -76,7 +76,7 @@ def print_msg(msg_type, msg, clear=False, art=True):
   
   elif msg_type == "success":
     if art: 
-      print("\n{4}{0}{1} {2}.•° {3}[{0} ✓ ️{3}]{4}\n"\
+      print("\n{4}{0}{1} {2}.•° {3}[{0} ✓ ️{3}]{4}"\
       .format(
         c.LIGHTGREEN_EX, 
         str(msg), c.LIGHTYELLOW_EX,

@@ -5,6 +5,8 @@ from .printer import print_msg, clear_console
 from .loader import Loader
 
 from number_guessing_game.guess_game import Guess
+from ATM_Mock.atm import ATM_Mock
+from currency_converter.converter import converter
 
 player = Guess()
 
@@ -16,12 +18,12 @@ def run_tool(index, tools, commands, delay=1.2):
            "name": "Guess Game"
          },
       2: {
-           "func": lambda: generate_password(),
-           "name": "Lazy Auth"
+           "func": lambda: ATM_Mock(),
+           "name": "ATM Mock"
          },
       3: {
-           "func": lambda: yield_one_password(), 
-           "name": "One Auth"
+           "func": lambda: converter(), 
+           "name": "Aboki $$"
          }
     }
     
@@ -31,6 +33,7 @@ def run_tool(index, tools, commands, delay=1.2):
       loader = Loader(load_text="Starting {}".format(switcher[index]['name'].upper()), load_type="success", feedback="Program loads Successfully!")
       loader.load()
       loader.terminate(timeout=1)
+      clear_console()
       
       return switcher[index]['func']()
     
