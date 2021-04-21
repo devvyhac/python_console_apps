@@ -2,7 +2,7 @@ import os, sys, time, random
 
 from methods.printer import get_input, print_msg, file_handle_success, print_tool_name, clear_console
 
-
+from methods.confirm import confirm_exit
 from .generator import yield_password, get_pass_length
 
 from methods.loader import Loader
@@ -39,6 +39,7 @@ class PassGenerator:
   def get_values(self):
     amount = int(get_input("Amount of passwords, default <100>: "))
     filename = get_input("Filename, with or without (.txt): ").split(".")[0] + ".txt"
+    filename = "password_lists/{}".format(filename)
     return {
       'amount': amount,
       'filename': filename
@@ -93,7 +94,7 @@ class PassGenerator:
       p.bar.finish()
       print_msg("success", "\n{} Passwords Generated.".format(len(pass_list)))
       del pass_list
-      file_handle_success(self.filename)
+      file_handle_success("./"+self.filename)
       timer.get_timestamp()
 
 
@@ -106,14 +107,20 @@ def generate_password():
 
       pass_generator.initialize_props()
       pass_generator.run_tasks()
+      
     except KeyboardInterrupt:
       break
       
     finally:
-      print_msg("info", "Restarting program in 5 seconds.")
-      print_msg("info", "Press Ctrl + c to quit")
+      
+      if not confirm_exit("Do you want to continue? [Y/n]: "):
+        break
+        
+      continue
+      # print_msg("info", "Restarting program in 5 seconds.")
+      # print_msg("info", "Press Ctrl + c to quit")
 
-      time.sleep(5)
+      # time.sleep(5)
       clear_console()
 
 

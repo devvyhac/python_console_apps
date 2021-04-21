@@ -9,6 +9,8 @@ from methods.printer import file_handle_success, print_msg
 from methods.progress import Progress
 from methods.timer import Timer
 
+from methods.confirm import confirm_exit
+
 
 lock = threading.Lock()
 
@@ -36,7 +38,7 @@ class Spider:
     url = url.replace("https://", "")\
     .replace("http://", "").split(".")[0]
     
-    self.filename = "{}.txt".format(url)
+    self.filename = "crawled_sites/{}.txt".format(url)
     
     if os.path.exists(self.filename):
       os.remove(self.filename)
@@ -139,11 +141,16 @@ def crawl(target_url, threads = 4):
     for link in links_array:
       spider.save_links(link + "\n")
     
-    file_handle_success(spider.filename)
+    file_handle_success("./"+spider.filename)
     timer.get_timestamp()
     
-    print_msg("info", "Restarting program in 5 seconds")
-    time.sleep(5)
+    print("")
+    exit()
+    
+    # if not confirm_exit("Do you want to continue? [Y/n]: "):
+      
+    # print_msg("info", "Restarting program in 5 seconds")
+    # time.sleep(5)
       
     
     # except:

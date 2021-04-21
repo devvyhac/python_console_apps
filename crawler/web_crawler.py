@@ -3,6 +3,7 @@ from methods.printer import clear_console, print_tool_name, get_input
 from methods.list_tools import list_commands
 from methods.loader import Loader
 from colorama import Fore
+from methods.confirm import confirm_exit
 
 commands = ["Exit Current Program"]
   
@@ -53,5 +54,6 @@ def web_crawler(spider):
        
     except KeyboardInterrupt:
       break
+      
       
    
