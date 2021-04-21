@@ -1,0 +1,5 @@
+colorama
+requests
+art
+bs4
+progressbar2
