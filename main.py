@@ -11,13 +11,14 @@ from methods.confirm import confirm_exit
 from methods.fancy import fancy_typo, fancy_text
 
 commands = ["List Available Programs", "Exit"]
-tools = ["Guess Game • [ Number Guessing Game ]", 
+tools = [
+         "Guess Game • [ Number Guessing Game ]", 
          "ATM Mock • [ ATM - Cash Deposit & Withdraw]",
          "Aboki $$ • [ Currency Converter ]",
-         "Anon Chat • [ Anonymous Chat Application ]", 
-         "Auth Hoard • [ Password Generator ]", 
-         "Moon Spider • [ Web Crawler/Site Map Payload ]"]
-
+         "Moon Spider • [ Web Crawler/Site Map Payload ]",
+         "Auth Hoard • [ Password Wordlist Generator ]",
+         "Auth Gen • [ Unique Single Password Generator ]"
+        ]
 
 clear_console()
 is_active = True

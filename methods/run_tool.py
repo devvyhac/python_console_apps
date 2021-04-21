@@ -4,6 +4,12 @@ from colorama import Fore
 from .printer import print_msg, clear_console
 from .loader import Loader
 
+from crawler import spider
+from crawler.web_crawler import web_crawler
+
+from pass_maker.password_generator import generate_password
+from pass_maker.one_password import yield_one_password
+
 from number_guessing_game.guess_game import Guess
 from ATM_Mock.atm import ATM_Mock
 from currency_converter.converter import converter
@@ -24,6 +30,18 @@ def run_tool(index, tools, commands, delay=1.2):
       3: {
            "func": lambda: converter(), 
            "name": "Aboki $$"
+         },
+      4: {
+           "func": lambda: web_crawler(spider),
+           "name": "Moon Spider"
+         },
+      5: {
+           "func": lambda: generate_password(),
+           "name": "Auth Hoard"
+         },
+      6: {
+           "func": lambda: yield_one_password(), 
+           "name": "Auth Gen"
          }
     }
     

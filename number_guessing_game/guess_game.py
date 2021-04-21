@@ -131,11 +131,11 @@ class Guess:
       except ValueError:
         print_msg("error", "Only Numbers are allowed, try again")
         continue
-  
+
   def increase_chances(self, addition):
       self.chances += addition
       self.attempts = self.chances
-      
+
   def proceed(self):
     self.level += 1
     self.max += 5
@@ -145,28 +145,29 @@ class Guess:
 
     if self.level % self.chance_regulator == 0:
         self.increase_chances(2)
+    else:
+        self.attempts = self.chances
 
     self.set_correct(self.min, self.max)
     self.score += 10
-    
+
     self.set_play_data()
     self.set_highscore()
-    
+
     loader = Loader(load_text="Loading Stage •[{}]•".format(self.level), load_type="success")
     loader.load()
     loader.terminate(timeout=.4, seize=1.1)
 
     clear_console()
-    
+
     print_msg("info", "Highscore •[{}]• By {}"\
       .format(self.highscore[1], self.highscore[0], art=True))
-    
+
     print_msg("info", "Guess the Number between {} and {}"\
       .format(self.min, self.max, art=True))
 
     print_msg("info", f"Player: {self.current_player[1]} <•> Stage: [• {self.level} •], Score: [• {self.score} •]", art=False)
-  
-        
+
   def compare_guess(self):
     # print(self.trial, self.correct)
     if self.trial == self.correct:
@@ -227,13 +228,15 @@ class Guess:
           print_msg("error", "GAME OVER!!!")
           time.sleep(3)
           self.active = False
+          exit()
           break
         
       except KeyboardInterrupt:
-          print("Quiting game")
-          time.sleep(1)
-          self.active = False
-          break
+        print("Quiting game")
+        time.sleep(1)
+        self.active = False
+        exit()
+        break
 
 
 
